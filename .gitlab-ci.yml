@@ -1,0 +1,16 @@
+image: node:15-alpine
+stages:
+  - docker
+
+build-docker:
+  image: docker:latest
+  variables:
+    DOCKER_DRIVER: overlay
+    CRYPTOGRAPHY_DONT_BUILD_RUST: 1
+  services:
+  - docker:dind
+  stage: docker
+  environment: staging
+  script:
+    - echo "Build docker 🐳"
+    - docker build . -t=expo-pokedex-app:gitlab-ci-b-${CI_PIPELINE_IID}

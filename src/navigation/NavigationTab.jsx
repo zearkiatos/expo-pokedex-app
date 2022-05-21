@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Image }  from 'react-native';
 import Icon from "react-native-vector-icons/FontAwesome5";
 import FavoritesScreen from "../screens/FavoritesScreen";
-import PokedexScreen from "../screens/PokedexScreen";
+import PokedexNavigation from "./PokedexNavigation";
 import AccountScreen from "../screens/AccountScreen";
 import pokeballImage from '../assets/pokeball.png';
 
@@ -19,8 +19,9 @@ const NavigationTab = () => (
         tabBarIcon: ({ color, size }) => <Icon name="heart" color={color} size={size} />,
       }}
     />
-    <Tab.Screen name="Pokedex" component={PokedexScreen} options={{
+    <Tab.Screen name="Pokedex" component={PokedexNavigation} options={{
         tabBarLabel: "",
+        headerShown: false,
         tabBarIcon: () => renderPokeball(),
     }}/>
     <Tab.Screen name="Account" component={AccountScreen} options={{

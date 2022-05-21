@@ -2,7 +2,7 @@
   "name": "expo-pokedex-app",
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
-  "description": "",
+  "description": "This is a Pokedex react native ⚛️ 📱 with expo application that integrated with pokeapi to show the list and information of the pokemon",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",

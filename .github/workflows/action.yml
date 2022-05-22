@@ -24,5 +24,15 @@ jobs:
            npm install
            npm install -g yarn
            npm install -g expo-cli
+    - name: Create .env
+      run: |
+        touch .env &&
+        echo "ENVIRONMENT=${ENVIRONMENT}" > .env
+        echo "POKEAPI_BASE_URL=${POKEAPI_BASE_URL}" >> .env
+        echo "POKEAPI_LIMIT=${POKEAPI_LIMIT}" >> .env
+      env:
+        ENVIRONMENT: ${{ secrets.ENVIRONMENT }}
+        POKEAPI_BASE_URL: ${{ secrets.POKEAPI_BASE_URL }}
+        POKEAPI_LIMIT: ${{ secrets.POKEAPI_LIMIT }}
     - name: Build docker 🐳
       run: docker build . -t=expo-pokedex-app:github-b-$GITHUB_RUN_NUMBER

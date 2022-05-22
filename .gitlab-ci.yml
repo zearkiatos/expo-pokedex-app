@@ -13,4 +13,8 @@ build-docker:
   environment: staging
   script:
     - echo "Build docker 🐳"
+    - touch .env
+    - echo "ENVIRONMENT=${ENVIRONMENT}" > .env
+    - echo "POKEAPI_BASE_URL=${POKEAPI_BASE_URL}" >> .env
+    - echo "POKEAPI_LIMIT=${POKEAPI_LIMIT}" >> .env
     - docker build . -t=expo-pokedex-app:gitlab-ci-b-${CI_PIPELINE_IID}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { SafeAreaView, StyleSheet, Text } from "react-native";
 import { getPokemons, getPokemonByUrl } from "../client/pokemonClient";
+import PokemonList from "../components/PokemonList";
 
 const PokedexScreen = () => {
   const [pokemons, setPokemons] = useState([]);
@@ -29,11 +30,9 @@ const PokedexScreen = () => {
   }, []);
   return (
     <SafeAreaView>
-      <Text>Pokedex</Text>
+      <PokemonList pokemons={pokemons} />
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({});
 
 export default PokedexScreen;

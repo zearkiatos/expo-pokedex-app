@@ -10,7 +10,6 @@ const PokedexScreen = () => {
     const pokemonList = [];
     for await (let pokemon of data.results) {
       const pokemonData = await getPokemonByUrl(pokemon.url);
-      console.log(pokemonData);
       pokemonList.push({
         id: pokemonData.id,
         name: pokemonData.name,

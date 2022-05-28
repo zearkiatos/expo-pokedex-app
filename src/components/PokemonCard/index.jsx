@@ -26,7 +26,7 @@ const PokemonCard = ({ pokemon }) => {
       <ImageBackground
         source={getTextureByPokemonType(pokemon.types[1].type.name)}
         style={styles.secondaryBackgroundImage}
-        imageStyle={{ borderRadius: 50, zIndez: -1 }}
+        imageStyle={{ borderRadius: 50, zIndex: -1 }}
       >
         <View
           style={backgroundStyles(
@@ -109,11 +109,10 @@ const styles = StyleSheet.create({
     position: "absolute",
     width: 100,
     height: 100,
-    borderRadius: "50%",
     zIndex: -1,
     alignSelf: "center",
     opacity: 0.7,
-    top: 10
+    top: 10,
   },
   circleShape: {
     position: "absolute",
@@ -122,10 +121,6 @@ const styles = StyleSheet.create({
     borderRadius: 100 / 2,
     zIndex: -1,
     alignSelf: "center",
-  },
-  backgroundImage: {
-    flex: 1,
-    resizeMode: "cover", // or 'stretch'
   },
 });
 

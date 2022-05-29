@@ -1,8 +1,10 @@
 import config from "../config";
 
-const getPokemons = async () => {
+const getPokemons = async (nextUrl) => {
   try {
-    const url = `${config.POKEAPI.BASE_URL}/pokemon?limit=${config.POKEAPI.LIMIT}&offset=0`;
+    const url = nextUrl
+      ? nextUrl
+      : `${config.POKEAPI.BASE_URL}/pokemon?limit=${config.POKEAPI.LIMIT}&offset=0`;
     const response = await fetch(url);
     const data = await response.json();
     return data;
@@ -16,14 +18,9 @@ const getPokemonByUrl = async (url) => {
     const response = await fetch(url);
     const data = await response.json();
     return data;
-  }
-  catch(ex) {
+  } catch (ex) {
     throw ex;
   }
-}
+};
 
-
-export {
-    getPokemons,
-    getPokemonByUrl
-}
+export { getPokemons, getPokemonByUrl };

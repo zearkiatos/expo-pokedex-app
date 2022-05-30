@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { SafeAreaView, Text, StyleSheet } from "react-native";
+import { ScrollView, StyleSheet } from "react-native";
 import { getPokemonById } from "../client/pokemonClient";
+import PokemonHeader from "../components/PokemonHeader";
 
 const PokemonScreen = ({ route: { params }, navigation }) => {
   const [pokemon, setPokemon] = useState(null);
@@ -18,10 +19,14 @@ const PokemonScreen = ({ route: { params }, navigation }) => {
   }, [params]);
   return (
     pokemon && (
-      <SafeAreaView>
-        <Text>Pokemon</Text>
-        <Text>{pokemon.name}</Text>
-      </SafeAreaView>
+      <ScrollView>
+        <PokemonHeader
+          name={pokemon.name}
+          order={pokemon.order}
+          image={pokemon.sprites.other["official-artwork"].front_default}
+          types={pokemon.types}
+        />
+      </ScrollView>
     )
   );
 };

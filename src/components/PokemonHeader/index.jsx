@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
   },
   background: {
     width: "100%",
-    height: 500,
+    height: 450,
     borderBottomEndRadius: 300,
     borderBottomLeftRadius: 300,
     borderBottomRightRadius: 300,
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
   },
   backgroundImage: {
     width: "100%",
-    height: 500,
+    height: 450,
     position: "absolute",
   },
   secondaryBackgroundImage: {

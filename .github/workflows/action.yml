@@ -1,0 +1,38 @@
+name: Node.js CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: 
+      name: staging
+    strategy:
+      matrix:
+        node-version: [15.x]
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Set up Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Generate build number
+      run: echo "The build number $GITHUB_RUN_NUMBER 🏗"
+    - name: Install dependencies
+      run: |
+           npm install
+           npm install -g yarn
+           npm install -g expo-cli
+    - name: Create .env
+      run: |
+        touch .env &&
+        echo "ENVIRONMENT=${ENVIRONMENT}" > .env
+        echo "POKEAPI_BASE_URL=${POKEAPI_BASE_URL}" >> .env
+        echo "POKEAPI_LIMIT=${POKEAPI_LIMIT}" >> .env
+      env:
+        ENVIRONMENT: ${{ secrets.ENVIRONMENT }}
+        POKEAPI_BASE_URL: ${{ secrets.POKEAPI_BASE_URL }}
+        POKEAPI_LIMIT: ${{ secrets.POKEAPI_LIMIT }}
+    - name: Build docker 🐳
+      run: docker build . -t=expo-pokedex-app:github-b-$GITHUB_RUN_NUMBER

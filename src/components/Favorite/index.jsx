@@ -6,7 +6,7 @@ import { save, exist } from "../../client/favoriteClient";
 
 const Favorite = ({ id }) => {
   const [isFavorite, setIsFavorite] = useState(false);
-  const [toggle, setToggleFavorite] = useState(false);
+  const [toggleFavorite, setToggleFavorite] = useState(false);
   const addFavorite = async () => {
     await save(id);
   };
@@ -24,7 +24,7 @@ const Favorite = ({ id }) => {
 
   useEffect(() => {
     getFavorite();
-  }, [id, reloadCheck]);
+  }, [id, toggleFavorite]);
 
   const removeFavorite = () => {
     console.log("Delete from favorites");

@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { StyleSheet, Text } from "react-native";
+import React, { useState, useCallback } from "react";
 import { useFocusEffect } from "@react-navigation/native";
 import PokemonList from "../components/PokemonList";
 import { get } from "../client/favoriteClient";
 import { getPokemonById } from "../client/pokemonClient";
 import useAuth from "../hooks/useAuth";
+import NotLogged from "../components/NotLogged";
 
 const FavoritesScreen = () => {
   const [pokemons, setPokemons] = useState([]);
@@ -33,12 +33,10 @@ const FavoritesScreen = () => {
   );
   
   return !auth ? (
-    <Text> User not authenticated</Text>
+    <NotLogged />
   ) : (
     <PokemonList pokemons={pokemons} />
   );
 };
-
-const styles = StyleSheet.create({});
 
 export default FavoritesScreen;

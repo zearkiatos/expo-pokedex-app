@@ -9,7 +9,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "android:build": "eas build -p android "
+    "android:build": "eas build -p android",
+    "ios:build": "eas build -p ios"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.17.6",

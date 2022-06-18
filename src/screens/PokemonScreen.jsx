@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { ScrollView, StyleSheet } from "react-native";
+import { ScrollView } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { getPokemonById } from "../client/pokemonClient";
 import PokemonHeader from "../components/PokemonHeader";
 import Type from "../components/Type";
 import Stats from "../components/Stats";
+import Favorite from "../components/Favorite";
+import useAuth from "../hooks/useAuth";
 
 const PokemonScreen = ({ route: { params }, navigation }) => {
   const [pokemon, setPokemon] = useState(null);
@@ -12,9 +14,10 @@ const PokemonScreen = ({ route: { params }, navigation }) => {
     const data = await getPokemonById(params.id);
     setPokemon(data);
   };
+  const { auth } = useAuth();
   useEffect(() => {
     navigation.setOptions({
-      headerRight: () => null,
+      headerRight: () => auth && <Favorite id={pokemon?.id} />,
       headerLeft: () => (
         <Icon
           name="arrow-left"
@@ -25,7 +28,7 @@ const PokemonScreen = ({ route: { params }, navigation }) => {
         />
       ),
     });
-  }, [navigation, params]);
+  }, [navigation, params, pokemon]);
   useEffect(() => {
     try {
       fetchPokemon();
@@ -49,7 +52,5 @@ const PokemonScreen = ({ route: { params }, navigation }) => {
     )
   );
 };
-
-const styles = StyleSheet.create({});
 
 export default PokemonScreen;

@@ -21,7 +21,7 @@
       "supportsTablet": true
     },
     "android": {
-      "package": "com.expo.pokedex-app",
+      "package": "com.caprilespe.expopokedexapp",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
